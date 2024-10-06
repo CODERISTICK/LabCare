@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elegant Homepage</title>
+    <title>NDMU LabCare</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <header>
         <img src="img/medLogo.png" alt="MedLogo"> <!-- Your image -->
         <div class="buttons">
-            <button>Login</button>
+            <button id="loginBtn">Login</button>
             <button>Online Result</button>
         </div>
     </header>
@@ -56,6 +56,40 @@
         </div>
     </div>
 
+    <!-- Modal Structure -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="form-container">
+                <div class="form-signin">
+                    <h2>Sign In</h2>
+                    <form id="signinForm">
+                        <label for="signinEmail">Email:</label>
+                        <input type="email" id="signinEmail" name="signinEmail" required>
+                        <label for="signinPassword">Password:</label>
+                        <input type="password" id="signinPassword" name="signinPassword" required>
+                        <button type="submit">Sign In</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+                </div>
+
+                <div class="form-signup">
+                    <h2>Sign Up</h2>
+                    <form id="signupForm">
+                        <label for="signupUsername">Username:</label>
+                        <input type="text" id="signupUsername" name="signupUsername" required>
+                        <label for="signupEmail">Email:</label>
+                        <input type="email" id="signupEmail" name="signupEmail" required>
+                        <label for="signupPassword">Password:</label>
+                        <input type="password" id="signupPassword" name="signupPassword" required>
+                        <button type="submit">Create Account</button>
+                    </form>
+                    <p>Already have an account? <a href="#" id="showSignin">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Social Media Section -->
     <div class="social-media">
         <h3>Connect with Us</h3>
@@ -65,6 +99,46 @@
             <img src="img/insta.png" alt="Instagram">  <!-- Replace with your Instagram icon -->
         </div>
     </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("loginBtn");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Show modal when button is clicked
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Close modal when <span> (x) is clicked
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Show signup form
+        document.getElementById("showSignup").onclick = function() {
+            document.querySelector(".form-signin").style.display = "none";
+            document.querySelector(".form-signup").style.display = "block";
+        }
+
+        // Show signin form
+        document.getElementById("showSignin").onclick = function() {
+            document.querySelector(".form-signup").style.display = "none";
+            document.querySelector(".form-signin").style.display = "block";
+        }
+    </script>
 
 </body>
 </html>
